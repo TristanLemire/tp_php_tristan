@@ -43,6 +43,9 @@
                         {% if etablissement["properties"]["email"] is defined %}
                             <li>Mail: {{ etablissement["properties"]["email"] }}</li>
                         {% endif %}
+                        {% if etablissement["properties"]["url"] is defined %}
+                            <li>Site: <a href="{{ etablissement["properties"]["url"] }}">{{ etablissement["properties"]["url"] }}</a></li>
+                        {% endif %}
                     </ul>
                     {% else %}
                         <p>Aucun etablissement trouvé.</p>
