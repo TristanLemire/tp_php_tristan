@@ -34,6 +34,14 @@
                     <ul>
                         <hr>
                         <li>{{ etablissement["properties"]["nom"] }}</li>
+                        {% if etablissement["properties"]["horaires"] is defined %}
+                            {% for horraire in etablissement["properties"]["horaires"] %}
+                                <li>Ouvert du {{ horraire["du"] }} au {{ horraire["au"] }}</li>
+                                {% for heure in horraire["heures"] %}
+                                    <p>De {{ heure["de"] }}H a {{ heure["a"] }}H</p>
+                                {% endfor %}
+                            {% endfor %}
+                        {% endif %}
                         {% if etablissement["properties"]["adresses"] is defined %}
                             <li>adresse: {{ etablissement["properties"]["adresses"][0]["lignes"][0] }},{{ etablissement["properties"]["adresses"][0]["codePostal"] }} {{ etablissement["properties"]["adresses"][0]["commune"] }}</li>
                         {% endif %}
