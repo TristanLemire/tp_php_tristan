@@ -36,7 +36,11 @@
                         <li>{{ etablissement["properties"]["nom"] }}</li>
                         {% if etablissement["properties"]["horaires"] is defined %}
                             {% for horraire in etablissement["properties"]["horaires"] %}
-                                <li>Ouvert du {{ horraire["du"] }} au {{ horraire["au"] }}</li>
+                                {% if horraire["du"] != horraire["au"] %}
+                                    <li>Ouvert du {{ horraire["du"] }} au {{ horraire["au"] }}</li>
+                                 {% else %}
+                                     <li>Ouvert le {{ horraire["du"] }}</li>
+                                {% endif %}
                                 {% for heure in horraire["heures"] %}
                                     <p>De {{ heure["de"]|split(':')[0] }}:{{ heure["de"]|split(':')[1] }}H a {{ heure["a"]|split(':')[0] }}:{{ heure["a"]|split(':')[1] }}H</p>
                             {% endfor %}
