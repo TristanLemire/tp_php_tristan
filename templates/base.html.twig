@@ -38,8 +38,8 @@
                             {% for horraire in etablissement["properties"]["horaires"] %}
                                 <li>Ouvert du {{ horraire["du"] }} au {{ horraire["au"] }}</li>
                                 {% for heure in horraire["heures"] %}
-                                    <p>De {{ heure["de"] }}H a {{ heure["a"] }}H</p>
-                                {% endfor %}
+                                    <p>De {{ heure["de"]|split(':')[0] }}:{{ heure["de"]|split(':')[1] }}H a {{ heure["a"]|split(':')[0] }}:{{ heure["a"]|split(':')[1] }}H</p>
+                            {% endfor %}
                             {% endfor %}
                         {% endif %}
                         {% if etablissement["properties"]["adresses"] is defined %}
