@@ -18,6 +18,7 @@ class IndexController extends AbstractController
     {
         $returnCity = [];
         $error = "";
+        $etablissements = [];
         if($_GET != []){
             $city= $_GET["city"];
             $postalCode= $_GET["postal_code"];
